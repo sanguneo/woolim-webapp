@@ -1,0 +1,51 @@
+.justify-center {
+  justify-content: center;
+}
+.items-center {
+  align-items: center;
+}
+
+@for $i from 1 through 50 {
+  .gap-#{$i} {
+    gap: $i + px;
+  }
+}
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  background-color: transparent;
+  height: 0;
+  background: transparent;
+}
+
+.radio-box {
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.year-select-box,
+.month-select-box {
+  display: flex;
+  align-items: center;
+  .MuiSelect-select {
+    padding: 5px;
+    border-radius: 0;
+  }
+  fieldset {
+    border: none;
+  }
+  .Mui-focused {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid #0075ff;
+    border-radius: 0;
+  }
+}
+
+.Mui-checked svg {
+  & > circle:nth-child(1),
+  & > rect:nth-child(1) {
+    fill: var(--primary-color);
+  }
+}
