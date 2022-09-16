@@ -1,7 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
+
+import { IMutationProps } from '@/shared/types/common.types';
+import { REQUESTS_OPERATION } from '@/shared/constants/common.constants';
 import merge from 'lodash/merge';
-import { REQUESTS_OPERATION } from '../utils/common.constants';
-import { IMutationProps } from '../utils/common.type';
 
 const apiBase = function (defaultConfig: AxiosRequestConfig) {
   const api = axios.create(defaultConfig);
@@ -12,11 +13,6 @@ const apiBase = function (defaultConfig: AxiosRequestConfig) {
 
   async function get<T>(url: string, config?: any): Promise<T> {
     const response = await api.get(url, { ...config });
-    return response.data as T;
-  }
-  async function authGet<T>(url: string, Authorization: string, config?: any): Promise<T> {
-    if (!Authorization) throw new Error('토큰값이 없습니다.');
-    const response = await api.get(url, merge(config, { headers: { Authorization } }));
     return response.data as T;
   }
 
@@ -35,7 +31,7 @@ const apiBase = function (defaultConfig: AxiosRequestConfig) {
     }
   }
 
-  return { configure, get, authGet, mutation, api };
+  return { configure, get, mutation };
 };
 
 export default apiBase;
