@@ -27,7 +27,6 @@
     "zustand": "^4.1.1"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.10.2",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@svgr/webpack": "^6.2.1",
