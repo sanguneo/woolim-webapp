@@ -1,6 +1,7 @@
 import { HomeContainer, getExampleState, setExampleState } from '@/shared/constants/pages';
 import React, { useEffect } from 'react';
 
+import Head from 'next/head';
 import type { NextPage } from 'next';
 import Posts from '@/components/Posts/Posts';
 import { dehydrate } from 'react-query';
@@ -20,10 +21,16 @@ const Home: NextPage = (): React.ReactElement => {
   useEffect(() => setExample('Durian NEXT exmaple'), []);
 
   return (
-    <HomeContainer>
-      <h1>{example}</h1>
-      <Posts />
-    </HomeContainer>
+    <>
+      <Head>
+        <title>Boilerplate Next</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <HomeContainer>
+        <h1>{example}</h1>
+        <Posts />
+      </HomeContainer>
+    </>
   );
 };
 
