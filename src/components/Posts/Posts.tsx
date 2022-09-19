@@ -1,7 +1,7 @@
-import Post from '../Post/Post';
+import Post from '@/components/Post/Post';
 import { PostsContainer } from '@/components/Posts/Posts.constants';
 import React from 'react';
-import useQueryPosts from './Posts.hook';
+import useQueryPosts from '@/components/Posts/Posts.hook';
 
 const Posts = () => {
   const { data, isFetching, isLoading, isError } = useQueryPosts();

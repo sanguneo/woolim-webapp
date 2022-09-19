@@ -5,7 +5,7 @@ interface IExampleStore {
   setExample: (props) => void;
 }
 
-export const useLoginStore = create<IExampleStore>((set) => ({
-  example: 'Exmple',
+export const useExampleStore = create<IExampleStore>((set) => ({
+  example: '',
   setExample: (props: string) => set(() => ({ example: props })),
 }));

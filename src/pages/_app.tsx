@@ -6,7 +6,7 @@ import { I18nextProvider } from 'react-i18next';
 import React from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import i18n from '@/locales/i18n';
-import queryClient from '@/shared/utils/queryClient';
+import queryClient from '@/shared/configs/queryClient';
 
 const App = ({ Component, pageProps }): React.ReactElement => {
   const env = process.env.NODE_ENV;
