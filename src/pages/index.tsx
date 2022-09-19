@@ -17,7 +17,7 @@ export async function getServerSideProps() {
 const Home: NextPage = (): React.ReactElement => {
   const example = useExampleStore(getExampleState);
   const setExample = useExampleStore(setExampleState);
-  useEffect(() => setExample('Durian next exmaple'), []);
+  useEffect(() => setExample('Durian NEXT exmaple'), []);
 
   return (
     <HomeContainer>
