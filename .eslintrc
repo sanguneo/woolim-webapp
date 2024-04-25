@@ -4,13 +4,17 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "modules": true
+      "modules": true,
+      "jsx": true
     },
     "project": "./tsconfig.json",
     "createDefaultProgram": true
   },
   "plugins": ["@typescript-eslint"],
   "extends": ["eslint:recommended", "next"],
+  "globals": {
+    "JSX": true
+  },
   "env": {
     "es6": true,
     "browser": true,
@@ -22,10 +26,12 @@
     "semi": ["error", "always"],
     "quotes": ["error", "single"],
     "brace-style": ["error", "1tbs"],
-    "curly": ["error", "multi-or-nest", "consistent"],
+    "curly": ["error", "multi-line", "consistent"],
     "object-curly-spacing": ["error", "always"],
     "object-curly-newline": "off",
     "react/display-name": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "off",
     "keyword-spacing": [
       "error",
       {
@@ -48,8 +54,8 @@
     "computed-property-spacing": ["error", "never"],
     "consistent-this": ["error", "that"],
     "function-call-argument-newline": ["error", "consistent"],
-    "indent": "off",
-    "@typescript-eslint/indent": ["error", 2],
+    //    "indent": ["error", 2],
+    //    "@typescript-eslint/indent": ["error", 2],
     "max-len": [
       "error",
       {
@@ -66,16 +72,16 @@
     "max-lines-per-function": [
       "error",
       {
-        "max": 500,
+        "max": 600,
         "skipBlankLines": true,
         "skipComments": true
       }
     ],
     "max-nested-callbacks": ["error", 5],
     "max-params": ["error", 10],
-    "multiline-ternary": ["error", "never"],
+    "multiline-ternary": "off",
     "no-negated-condition": "off",
-    "no-nested-ternary": "error",
+    "no-nested-ternary": 0,
     "no-plusplus": [
       "error",
       {
@@ -114,24 +120,24 @@
     "no-new": "error",
     "no-new-func": "error",
     "no-new-wrappers": "error",
-    "no-param-reassign": "error",
+    "no-param-reassign": "warn",
     "no-proto": "error",
-    "no-return-assign": ["error", "always"],
+    "no-return-assign": 0,
     "no-return-await": "off",
     "no-script-url": "error",
     "no-self-compare": "error",
     "no-sequences": "error",
     "no-throw-literal": "error",
     "no-unmodified-loop-condition": "error",
-    "no-unused-expressions": "error",
+    "no-unused-expressions": "off",
     "no-useless-call": "error",
     "no-useless-concat": "error",
     "no-useless-return": "error",
     "no-void": "error",
-    "nonblock-statement-body-position": ["error", "beside"],
+    "nonblock-statement-body-position": "off",
     "prefer-promise-reject-errors": "error",
     "prefer-regex-literals": "error",
-    "require-await": "error",
+    "require-await": "off",
     "react-hooks/exhaustive-deps": "off",
     "yoda": [
       "error",
@@ -146,9 +152,9 @@
     "no-shadow": "off",
     // replaced by ts-eslint rule below
     "@typescript-eslint/no-shadow": "off",
-    "no-use-before-define": "error",
+    "no-use-before-define": 0,
     "func-names": 0,
-    "no-unused-vars": "off",
+    "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
@@ -173,7 +179,7 @@
     ],
     "eol-last": "error",
     // comments
-    "line-comment-position": ["error", "above"],
+    "line-comment-position": ["off", "above"],
     "no-multi-spaces": [
       "error",
       {
@@ -190,8 +196,16 @@
     "spaced-comment": "off",
     "space-infix-ops": "error",
     "react-hooks/rules-of-hooks": "warn",
-    "import/order": "off",
-    "@next/next/no-img-element": "off"
+    "jsx-a11y/aria-props": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "never",
+        "pathGroupsExcludedImportTypes": ["builtin", "object"]
+      }
+    ],
+    "no-async-promise-executor": "warn"
   },
   "settings": {
     "import/resolver": {
