@@ -38,8 +38,13 @@ yarn-error.log*
 .idea
 .vscode
 
-# Service worker
-sw.*
-
 # macOS
 .DS_Store
+
+.env
+.env.*
+
+.vercel
+
+# Sentry Config File
+.env.sentry-build-plugin

@@ -1,0 +1,40 @@
+.list {
+  width: 100%;
+  min-width: 360px;
+  max-width: 500px;
+  list-style: none;
+  & > li {
+    display: flex;
+    cursor: pointer;
+    &:nth-of-type(odd) {
+      background-color: #efefef;
+    }
+    & > div {
+      padding-inline: 0.5rem;
+      &:nth-of-type(1) {
+        width: 44px;
+      }
+      &:nth-of-type(2) {
+        width: 48px;
+      }
+      &:nth-of-type(3) {
+        width: 52px;
+      }
+      &:nth-of-type(4) {
+        width: auto;
+        text-overflow: ellipsis;
+        white-space: pre;
+        overflow: hidden;
+      }
+    }
+  }
+  &.head {
+    position: sticky;
+    top: 3rem;
+    font-weight: bold;
+    & > li {
+      cursor: default;
+      background-color: #c8c8c8;
+    }
+  }
+}
