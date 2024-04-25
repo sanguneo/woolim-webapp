@@ -22,7 +22,7 @@ const Home = ({ doc }: {doc: any}): React.ReactElement => {
       <div style={{ display: 'flex', width: '500px', gap: '50px' }}>
         {doc.map(pl => <div key={pl[0]} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <h2>{pl[0]}</h2>
-          <h3 style={{textAlign: 'right'}}>{pl[1].rank}번째</h3>
+          <h3 style={{ textAlign: 'right' }}>{pl[1].rank}번째</h3>
           <ol style={{ listStyle: 'decimal', listStylePosition: 'inside' }}>{pl[1].list.map(item => <li key={item} style={{ overflow: 'hidden', whiteSpace: 'pre', textOverflow: 'ellipsis', width: '100%', marginBottom: '3px' }}>{item}</li>)}</ol>
         </div>)}
       </div>
