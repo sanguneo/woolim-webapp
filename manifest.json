@@ -1,0 +1,10 @@
+{
+  "name": "우림호실관리",
+  "short_name": "호실관리",
+  "theme_color": "#fff",
+  "background_color": "#fff",
+  "display": "fullScreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
+}
