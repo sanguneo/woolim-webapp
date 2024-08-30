@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
+import '@/shared/styles/reset.css';
 import '@/shared/styles/globals.css';
 
 export const viewport: Viewport = {
@@ -44,7 +45,6 @@ export default function RootLayout({ children }: {
     <html lang="ko">
       <body>
         {children}
-        {/*<Subscription />*/}
       </body>
     </html>
   );

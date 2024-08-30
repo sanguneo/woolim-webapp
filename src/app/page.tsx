@@ -14,10 +14,6 @@ export default function Home() {
 
   const [activeRoom, setActiveRoom] = useState<Record<TKeys, string>|null>(null);
 
-  const [deferredEvent, setDeferredEvent] = useState<any>(()=>{});
-
-  // const ref = useRef<HTMLElement>(null);
-
   const onChangeCategory = (e: ChangeEvent<HTMLSelectElement>) => {
     setSearchCategory(e.target.value as TKeys);
   };
