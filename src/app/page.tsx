@@ -49,7 +49,7 @@ export default function Home() {
         <nav className={'w-full h-12 max-w-[500px] min-w-[300px] sticky top-0 gap-4 flex justify-center py-2 bg-white flex-shrink-0 flex-grow-0'}>
           <button onClick={onClickRefetch} className={'text-xs whitespace-pre w-16'}>새로고침 ↺</button>
           <select value={searchCategory} onChange={onChangeCategory} className={'w-16 whitespace-pre'}>
-            {keys.map(key => <option value={key} key={key}>{key}</option>)}
+            {keys.map(key => key !== 'idx' && <option value={key} key={key}>{key}</option>)}
           </select>
           <input type="text" placeholder={'검색어 입력'} onChange={onChangeQuery} value={query} className={'w-[calc(100%-8rem)] h-8 py-0'}/>
         </nav>
