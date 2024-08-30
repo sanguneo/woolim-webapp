@@ -1,7 +1,7 @@
 {
-  "name": "우림 호실 관리",
-  "short_name": "호실관리",
-  "description": "우림 호실 관리",
+  "name": "우림호실관리",
+  "short_name": "우림호실관리",
+  "description": "우림호실관리",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",
