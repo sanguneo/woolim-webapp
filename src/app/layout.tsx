@@ -10,8 +10,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: '우림호실관리',
-  description: '우림호실관리',
+  title: '입주사관리',
+  description: '부평 우림라이온스밸리 입주사관리',
   manifest: '/manifest.json',
   icons: {
     icon: [
