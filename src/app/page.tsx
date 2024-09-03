@@ -43,28 +43,14 @@ export default function Home() {
       e.preventDefault();
       setDeferredPrompt(e);  // 이벤트를 상태로 저장
       setIsInstallable(true);  // 설치 가능한 상태로 설정
-
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
-  useEffect(() => {
-    if (!isInstallable) return;
-    setTimeout(()=> {
-      let event = new MouseEvent('click', {
-        'view' : window,
-        'bubbles' : true,
-        'cancelable' : true
-      });
-      (document.querySelector('#install') as HTMLButtonElement).dispatchEvent(event);
-    }, 500);
-  }, [isInstallable]);
 
   const handleInstallClick = async () => {
     if (deferredPrompt) {
@@ -89,12 +75,12 @@ export default function Home() {
     <>
       <main className={'h-screen overflow-y-scroll relative flex flex-col items-center'}>
         <nav className={'w-full h-12 max-w-[500px] min-w-[300px] sticky top-0 gap-4 flex justify-center py-2 bg-white flex-shrink-0 flex-grow-0'}>
-          {isInstallable && <button onClick={handleInstallClick} id="install" className={'absolute l-[-20px] top-[-20px] w-[10px] h-[10px]'}>설치</button>}
+          {isInstallable && <button onClick={handleInstallClick} className={'text-xs whitespace-pre w-16 font-bold'}>설치</button>}
           <button onClick={onClickRefetch} className={'text-xs whitespace-pre w-16'}>새로고침 ↺</button>
           <select value={searchCategory} onChange={onChangeCategory} className={'w-16 whitespace-pre'}>
             {keys.map(key => key !== 'idx' && <option value={key} key={key}>{key}</option>)}
           </select>
-          <input type="text" placeholder={'검색어 입력'} onChange={onChangeQuery} value={query} className={'w-[calc(100%-12rem)] h-8 py-0'} />
+          <input type="text" placeholder={'검색어 입력'} onChange={onChangeQuery} value={query} className={`w-[calc(100%-${isInstallable ? 12 : 8}rem)] h-8 py-0`} />
         </nav>
         <ul className={`${listModule.list} ${listModule.head}`}>
           <li>
