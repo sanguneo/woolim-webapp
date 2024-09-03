@@ -1,7 +1,7 @@
 {
-  "name": "우림호실관리",
-  "short_name": "우림호실관리",
-  "description": "우림호실관리",
+  "name": "우림라이온스밸리입주사관리",
+  "short_name": "입주사관리",
+  "description": "부평라이온스밸리 입주사관리",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",
