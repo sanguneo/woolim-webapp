@@ -14,6 +14,9 @@ export default function Home() {
 
   const [activeRoom, setActiveRoom] = useState<Record<TKeys, string>|null>(null);
 
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstallable, setIsInstallable] = useState(false);
+
   const onChangeCategory = (e: ChangeEvent<HTMLSelectElement>) => {
     setSearchCategory(e.target.value as TKeys);
   };
@@ -36,7 +39,32 @@ export default function Home() {
     (list.length ? Promise.resolve(list) : getList()).then((list: any[]) => {
       setWoolimfloorList(list.map((l, idx) => ({ idx, ...l })));
     });
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);  // 이벤트를 상태로 저장
+      setIsInstallable(true);  // 설치 가능한 상태로 설정
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();  // 설치 프롬프트 표시
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      setDeferredPrompt(null);  // 프롬프트 사용 후 초기화
+      setIsInstallable(false);  // 설치 가능 상태 해제
+    }
+  };
 
   const queriedList = useMemo(()=> {
     if (query.trim() === '') return woolimfloorList;
@@ -47,15 +75,16 @@ export default function Home() {
     <>
       <main className={'h-screen overflow-y-scroll relative flex flex-col items-center'}>
         <nav className={'w-full h-12 max-w-[500px] min-w-[300px] sticky top-0 gap-4 flex justify-center py-2 bg-white flex-shrink-0 flex-grow-0'}>
+          {isInstallable && <button onClick={handleInstallClick} className={'text-xs whitespace-pre w-16 font-bold'}>설치</button>}
           <button onClick={onClickRefetch} className={'text-xs whitespace-pre w-16'}>새로고침 ↺</button>
           <select value={searchCategory} onChange={onChangeCategory} className={'w-16 whitespace-pre'}>
             {keys.map(key => key !== 'idx' && <option value={key} key={key}>{key}</option>)}
           </select>
-          <input type="text" placeholder={'검색어 입력'} onChange={onChangeQuery} value={query} className={'w-[calc(100%-8rem)] h-8 py-0'}/>
+          <input type="text" placeholder={'검색어 입력'} onChange={onChangeQuery} value={query} className={'w-[calc(100%-12rem)] h-8 py-0'} />
         </nav>
         <ul className={`${listModule.list} ${listModule.head}`}>
           <li>
-            <div>{'동'}</div>
+          <div>{'동'}</div>
             <div>{'층'}</div>
             <div>{'호'}</div>
             <div>{'명칭'}</div>
