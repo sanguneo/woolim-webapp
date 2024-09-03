@@ -57,8 +57,13 @@ export default function Home() {
   useEffect(() => {
     if (!isInstallable) return;
     setTimeout(()=> {
-      (document.querySelector('#install') as HTMLButtonElement).click();
-    }, 1000);
+      let event = new MouseEvent('click', {
+        'view' : window,
+        'bubbles' : true,
+        'cancelable' : true
+      });
+      (document.querySelector('#install') as HTMLButtonElement).dispatchEvent(event);
+    }, 500);
   }, [isInstallable]);
 
   const handleInstallClick = async () => {
