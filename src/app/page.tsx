@@ -43,9 +43,14 @@ export default function Home() {
       e.preventDefault();
       setDeferredPrompt(e);  // 이벤트를 상태로 저장
       setIsInstallable(true);  // 설치 가능한 상태로 설정
+      setTimeout(()=> {
+        document.getElementById('install').click();
+      }, 500);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -75,7 +80,7 @@ export default function Home() {
     <>
       <main className={'h-screen overflow-y-scroll relative flex flex-col items-center'}>
         <nav className={'w-full h-12 max-w-[500px] min-w-[300px] sticky top-0 gap-4 flex justify-center py-2 bg-white flex-shrink-0 flex-grow-0'}>
-          {isInstallable && <button onClick={handleInstallClick} className={'text-xs whitespace-pre w-16 font-bold'}>설치</button>}
+          {isInstallable && <button onClick={handleInstallClick} id="install" className={'hidden'}>설치</button>}
           <button onClick={onClickRefetch} className={'text-xs whitespace-pre w-16'}>새로고침 ↺</button>
           <select value={searchCategory} onChange={onChangeCategory} className={'w-16 whitespace-pre'}>
             {keys.map(key => key !== 'idx' && <option value={key} key={key}>{key}</option>)}
