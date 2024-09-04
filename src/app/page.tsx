@@ -73,14 +73,14 @@ export default function Home() {
 
   return (
     <>
-      <main className={'w-full h-screen overflow-y-scroll relative flex flex-col items-center'}>
-        <nav className={'w-full max-w-[640px] min-w-[320px] h-12 sticky top-0 gap-2 flex justify-center py-2 bg-white flex-shrink-0 flex-grow-0'}>
+      <main className={'h-screen overflow-y-scroll relative flex flex-col items-center'}>
+        <nav className={'w-full max-w-[640px] min-w-[300px] h-12 sticky top-0 gap-2 flex justify-center py-2 bg-white flex-shrink-0 flex-grow-0'}>
           {isInstallable && <button onClick={handleInstallClick} className={'text-xs whitespace-pre w-8 font-bold'}>설치</button>}
           <button onClick={onClickRefetch} className={'text-xs whitespace-pre w-16'}>새로고침 ↺</button>
           <select value={searchCategory} onChange={onChangeCategory} className={'w-16 whitespace-pre'}>
             {keys.map(key => key !== 'idx' && <option value={key} key={key}>{key}</option>)}
           </select>
-          <input type="text" placeholder={'검색어 입력'} onChange={onChangeQuery} value={query} className={`w-[calc(100%-${isInstallable ? 12 : 8}rem)] h-8 py-0`} />
+          <input type="text" placeholder={'검색어 입력'} onChange={onChangeQuery} value={query} className={`h-8 py-0 ${isInstallable ? listModule.installable : listModule.notinstallable}`} />
         </nav>
         <ul className={`${listModule.list} ${listModule.head}`}>
           <li>
@@ -98,7 +98,7 @@ export default function Home() {
             <div>{room['명칭']}</div>
           </li>)}
         </ul>
-        {activeRoom && <div className={'h-screen w-full max-w-[640px] min-w-[320px] fixed top-0 bg-white px-4 py-2 box-border flex flex-col justify-center'}>
+        {activeRoom && <div className={'h-screen w-full max-w-[640px] min-w-[300px] fixed top-0 bg-white px-4 py-2 box-border flex flex-col justify-center'}>
           <b className="text-3xl absolute top-2 right-4 cursor-pointer" onClick={()=>setActiveRoom(null)}>&times;</b>
           <ul className={'flex flex-col gap-4'}>
             {keys.map(key => key !== 'idx' && <li key={key} className={'flex w-full gap-4'}>
