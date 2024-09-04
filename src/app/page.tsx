@@ -84,7 +84,7 @@ export default function Home() {
         </nav>
         <ul className={`${listModule.list} ${listModule.head}`}>
           <li>
-          <div>{'동'}</div>
+            <div>{'동'}</div>
             <div>{'층'}</div>
             <div>{'호'}</div>
             <div>{'명칭'}</div>
